@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bar Sheet</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:     #1a1a2e;
+    --card:   #162447;
+    --border: rgba(255,255,255,0.07);
+    --text:   #eaeaea;
+    --dim:    #8892b0;
+    --c1:     #e94560;
+    --c2:     #f5a623;
+    --c3:     #00d4aa;
+    --empty:  rgba(255,255,255,0.07);
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Nunito', sans-serif;
+    padding: 0 0 60px;
+  }
+
+  header {
+    padding: 22px 16px 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .logo {
+    width: 42px; height: 42px;
+    background: linear-gradient(135deg, #e94560, #f5a623);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+
+  header h1 { font-size: 22px; font-weight: 800; line-height: 1; }
+
+  /* Legend */
+  .legend {
+    display: flex;
+    gap: 6px;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    flex-wrap: wrap;
+  }
+
+  .leg {
+    display: flex; align-items: center; gap: 8px;
+    background: #0f1f3a;
+    border-radius: 20px;
+    padding: 5px 12px;
+    font-size: 12px; font-weight: 700; color: var(--dim);
+  }
+
+  /* Mini health bar for legend */
+  .leg-bar { display: flex; flex-direction: column; gap: 2px; }
+  .lb { width: 10px; height: 4px; border-radius: 1px; background: var(--empty); }
+
+  /* Main grid */
+  main {
+    padding: 14px 12px;
+    max-width: 960px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 12px;
+    align-items: start;
+  }
+
+  .cat-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+
+  .cat-head {
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .cat-emoji { font-size: 15px; line-height: 1; }
+
+  .cat-title {
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.11em;
+  }
+
+  .item-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 9px 14px;
+    border-bottom: 1px solid var(--border);
+    gap: 12px;
+  }
+  .item-row:last-child { border-bottom: none; }
+
+  .item-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text);
+    flex: 1;
+  }
+
+  /* === MEGA MAN HEALTH BAR === */
+  .hbar {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex-shrink: 0;
+  }
+
+  .hbar .seg {
+    width: 14px;
+    height: 5px;
+    border-radius: 1px;
+    background: var(--empty);
+  }
+
+  /* p1 — 1 red seg (bottom) */
+  .p1 .seg:nth-child(3) { background: var(--c1); box-shadow: 0 0 5px var(--c1); }
+
+  /* p2 — 2 orange segs */
+  .p2 .seg:nth-child(2) { background: var(--c2); box-shadow: 0 0 5px var(--c2); }
+  .p2 .seg:nth-child(3) { background: var(--c2); box-shadow: 0 0 5px var(--c2); }
+
+  /* p3 — 3 teal segs */
+  .p3 .seg:nth-child(1) { background: var(--c3); box-shadow: 0 0 6px var(--c3); }
+  .p3 .seg:nth-child(2) { background: var(--c3); box-shadow: 0 0 6px var(--c3); }
+  .p3 .seg:nth-child(3) { background: var(--c3); box-shadow: 0 0 6px var(--c3); }
+
+  /* Category title colors */
+  .col-red    .cat-title { color: #e94560; }
+  .col-orange .cat-title { color: #f5a623; }
+  .col-teal   .cat-title { color: #00d4aa; }
+  .col-purple .cat-title { color: #a78bfa; }
+  .col-blue   .cat-title { color: #38bdf8; }
+  .col-pink   .cat-title { color: #fb7185; }
+  .col-green  .cat-title { color: #4ade80; }
+  .col-yellow .cat-title { color: #facc15; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">🍹</div>
+  <h1>Bar Sheet</h1>
+</header>
+
+<div class="legend">
+  <div class="leg">
+    <div class="leg-bar">
+      <div class="lb"></div><div class="lb"></div>
+      <div class="lb" style="background:var(--c1);box-shadow:0 0 5px var(--c1)"></div>
+    </div>
+    Low
+  </div>
+  <div class="leg">
+    <div class="leg-bar">
+      <div class="lb"></div>
+      <div class="lb" style="background:var(--c2);box-shadow:0 0 5px var(--c2)"></div>
+      <div class="lb" style="background:var(--c2);box-shadow:0 0 5px var(--c2)"></div>
+    </div>
+    Medium
+  </div>
+  <div class="leg">
+    <div class="leg-bar">
+      <div class="lb" style="background:var(--c3);box-shadow:0 0 5px var(--c3)"></div>
+      <div class="lb" style="background:var(--c3);box-shadow:0 0 5px var(--c3)"></div>
+      <div class="lb" style="background:var(--c3);box-shadow:0 0 5px var(--c3)"></div>
+    </div>
+    High
+  </div>
+</div>
+
+<main>
+
+  <div class="cat-card col-red">
+    <div class="cat-head"><span class="cat-emoji">🥃</span><span class="cat-title">Vodka</span></div>
+    <div class="item-row p1"><span class="item-name">Smirnoff</span><div class="hbar"><div class="seg"></div><div class="seg"></div><div class="seg"></div></div></div>
+    <div class="item-row p3"><span class="item-name">Tito's</span><div class="hbar"><div class="seg"></div><div class="seg"></div><div class="seg"></div></div></div>
+    <div class="item-row p1"><span class="item-name">Ketel One</span><div class="hbar"><div class="seg"></div><div class="seg"></div><div class="seg"></div></div></div>
+    <div class="item-row p1"><span class="item-name">Grey Goose</span><div class="hbar"><div class="seg"></div><div class="seg"></div><div class="seg"></div></div></div>
+  </div>
+
+  <div class="cat-card col-blue">
+    <div class="cat-head"><span class="cat-emoji">🌿</span><span class="cat-title">Gin</span></div>
+    <div class="item-row p2"><span class="item-name">Beefeater / Bombay</span><div class="hbar"><div class="seg"></div><div class="seg"></div><div class="seg"></div></div></div>
+    <div class="item-row p1"><span class="item-name">Tanqueray</span><div class="hbar"><div class="seg"></div><div class="seg"></div><div class="seg"></div></div></div>
+    <div class="item-row p1"><span class="item-name">Bombay Sapphire</span><div class="hbar"><div class="seg"></div><div class="seg"></div><div class="seg"></div></div></div>
+    <div class="item-row p1"><span class="item-name">Hendrick's</span><div class="hbar"><div class="seg"></div><div class="seg"></div><div class="seg"></div></div></div>
+  </div>
+
+  <div class="cat-card col-teal">
+    <div class="cat-head"><span class="cat-emoji">🌵</span><span class="cat-title">Tequila</span></div>
+    <div class="item-row p3"><span class="item-name">Sauza Blanco (well)</span><div class="hbar"><div class="seg"></div><div class="seg"></div><div class="seg"></div></div></div>
+    <div class="item-row p2"><span class="item-name">Casamigos Blanco</span><div class="hbar"><div class="seg"></div><div class="seg"></div><div class="seg"></div></div></div>
+    <div class="item-row p1"><span class="item-name">Casamigos Repo</span><div class="hbar"><div class="seg"></div><div class="seg"></div><div class="seg"></div></div></div>
+    <div class="item-row p1"><span class="item-name">Don Julio Añejo</span><div class="hbar"><div class="seg"></div><div class="seg"></div><div class="seg"></div></div></div>
+    <div class="item-row p1"><span class="item-name">Clase Azul</span><div class="hbar"><div class="seg"></div><div class="seg"></div><div class="seg"></div></div></div>
+    <div class="item-row p2"><span class="item-name">Patrón Silver</span><div class="hbar"><div class="seg"></div><div class="seg"></div><div class="seg"></div></div></div>
+    <div class="item-row p2"><span class="item-name">Casamigos Jalapeño/Cucumber</span><div class="hbar"><div class="seg"></div><div class="seg"></div><div class="seg"></div></div></div>
+  </div>
+
+  <div class="cat-card col-orange">
+    <div class="cat-head"><span class="cat-emoji">🥃</span><span class="cat-title">Whiskey & Bourbon</span></div>
+    <div class="item-row p1"><span class="item-name">Jim Beam</span><div class="hbar"><div class="seg"></div><div class="seg"></div><div class="seg"></div></div></div>
+    <div class="item-row p3"><span class="item-name">Buffalo Trace</span><div class="hbar"><div class="seg"></div><div class="seg"></div><div class="seg"></div></div></div>
+    <div class="item-row p3"><span class="item-name">Maker's Mark</span><div class="hbar"><div class="seg"></div><div class="seg"></div><div class="seg"></div></div></div>
+    <div class="item-row p2"><span class="item-name">Woodford Reserve</span><div class="hbar"><div class="seg"></div><div class="seg"></div><div class="seg"></div></div></div>
+    <div class="item-row p1"><span class="item-name">Knob Creek</span><div class="hbar"><div class="seg"></div><div class="seg"></div><div class="seg"></div></div></div>
+    <div class="item-row p1"><span class="item-name">Bulleit Rye</span><div class="hbar"><div class="seg"></div><div class="seg"></div><div class="seg"></div></div></div>
+  </div>
+
+  <div class="cat-card col-yellow">
+    <div class="cat-head"><span class="cat-emoji">🏴󠁧󠁢󠁳󠁣󠁴󠁿</span><span class="cat-title">Scotch</span></div>
+    <div class="item-row p1"><span class="item-name">Johnnie Walker Black</span><div class="hbar"><div class="seg"></div><div class="seg"></div><div class="seg"></div></div></div>
+    <div class="item-row p2"><span class="item-name">Macallan 12</span><div class="hbar"><div class="seg"></div><div class="seg"></div><div class="seg"></div></div></div>
+  </div>
+
+  <div class="cat-card col-pink">
+    <div class="cat-head"><span class="cat-emoji">✨</span><span class="cat-title">Other Spirits</span></div>
+    <div class="item-row p1"><span class="item-name">Jameson</span><div class="hbar"><div class="seg"></div><div class="seg"></div><div class="seg"></div></div></div>
+    <div class="item-row p1"><span class="item-name">Hennessy VS</span><div class="hbar"><div class="seg"></div><div class="seg"></div><div class="seg"></div></div></div>
+  </div>
+
+  <div class="cat-card col-purple">
+    <div class="cat-head"><span class="cat-emoji">🍬</span><span class="cat-title">Cordials & Liqueurs</span></div>
+    <div class="item-row p2"><span class="item-name">Triple Sec</span><div class="hbar"><div class="seg"></div><div class="seg"></div><div class="seg"></div></div></div>
+    <div class="item-row p1"><span class="item-name">Kahlúa</span><div class="hbar"><div class="seg"></div><div class="seg"></div><div class="seg"></div></div></div>
+    <div class="item-row p1"><span class="item-name">Bailey's</span><div class="hbar"><div class="seg"></div><div class="seg"></div><div class="seg"></div></div></div>
+    <div class="item-row p1"><span class="item-name">Amaretto</span><div class="hbar"><div class="seg"></div><div class="seg"></div><div class="seg"></div></div></div>
+    <div class="item-row p1"><span class="item-name">Aperol</span><div class="hbar"><div class="seg"></div><div class="seg"></div><div class="seg"></div></div></div>
+    <div class="item-row p1"><span class="item-name">Campari</span><div class="hbar"><div class="seg"></div><div class="seg"></div><div class="seg"></div></div></div>
+    <div class="item-row p1"><span class="item-name">Sweet Vermouth</span><div class="hbar"><div class="seg"></div><div class="seg"></div><div class="seg"></div></div></div>
+    <div class="item-row p1"><span class="item-name">Dry Vermouth</span><div class="hbar"><div class="seg"></div><div class="seg"></div><div class="seg"></div></div></div>
+    <div class="item-row p1"><span class="item-name">Grand Marnier</span><div class="hbar"><div class="seg"></div><div class="seg"></div><div class="seg"></div></div></div>
+    <div class="item-row p1"><span class="item-name">Ancho Reyes Green</span><div class="hbar"><div class="seg"></div><div class="seg"></div><div class="seg"></div></div></div>
+  </div>
+
+  <div class="cat-card col-red">
+    <div class="cat-head"><span class="cat-emoji">🍷</span><span class="cat-title">Red Wine</span></div>
+    <div class="item-row p3"><span class="item-name">Cabernet Sauvignon</span><div class="hbar"><div class="seg"></div><div class="seg"></div><div class="seg"></div></div></div>
+    <div class="item-row p2"><span class="item-name">Pinot Noir</span><div class="hbar"><div class="seg"></div><div class="seg"></div><div class="seg"></div></div></div>
+    <div class="item-row p2"><span class="item-name">Red Blend</span><div class="hbar"><div class="seg"></div><div class="seg"></div><div class="seg"></div></div></div>
+  </div>
+
+  <div class="cat-card col-green">
+    <div class="cat-head"><span class="cat-emoji">🥂</span><span class="cat-title">White Wine</span></div>
+    <div class="item-row p3"><span class="item-name">Chardonnay</span><div class="hbar"><div class="seg"></div><div class="seg"></div><div class="seg"></div></div></div>
+    <div class="item-row p2"><span class="item-name">Pinot Grigio</span><div class="hbar"><div class="seg"></div><div class="seg"></div><div class="seg"></div></div></div>
+    <div class="item-row p1"><span class="item-name">Sauvignon Blanc</span><div class="hbar"><div class="seg"></div><div class="seg"></div><div class="seg"></div></div></div>
+  </div>
+
+  <div class="cat-card col-yellow">
+    <div class="cat-head"><span class="cat-emoji">🍾</span><span class="cat-title">Sparkling</span></div>
+    <div class="item-row p2"><span class="item-name">Prosecco (splits)</span><div class="hbar"><div class="seg"></div><div class="seg"></div><div class="seg"></div></div></div>
+  </div>
+
+  <div class="cat-card col-orange">
+    <div class="cat-head"><span class="cat-emoji">🍊</span><span class="cat-title">Juices</span></div>
+    <div class="item-row p3"><span class="item-name">Lime Juice</span><div class="hbar"><div class="seg"></div><div class="seg"></div><div class="seg"></div></div></div>
+    <div class="item-row p2"><span class="item-name">Lemon Juice</span><div class="hbar"><div class="seg"></div><div class="seg"></div><div class="seg"></div></div></div>
+    <div class="item-row p1"><span class="item-name">Grapefruit Juice</span><div class="hbar"><div class="seg"></div><div class="seg"></div><div class="seg"></div></div></div>
+    <div class="item-row p1"><span class="item-name">Orange Juice</span><div class="hbar"><div class="seg"></div><div class="seg"></div><div class="seg"></div></div></div>
+    <div class="item-row p1"><span class="item-name">Pineapple Juice</span><div class="hbar"><div class="seg"></div><div class="seg"></div><div class="seg"></div></div></div>
+    <div class="item-row p2"><span class="item-name">Cranberry Juice</span><div class="hbar"><div class="seg"></div><div class="seg"></div><div class="seg"></div></div></div>
+  </div>
+
+  <div class="cat-card col-teal">
+    <div class="cat-head"><span class="cat-emoji">🧪</span><span class="cat-title">Syrups & Bitters</span></div>
+    <div class="item-row p3"><span class="item-name">Simple Syrup</span><div class="hbar"><div class="seg"></div><div class="seg"></div><div class="seg"></div></div></div>
+    <div class="item-row p1"><span class="item-name">Grenadine</span><div class="hbar"><div class="seg"></div><div class="seg"></div><div class="seg"></div></div></div>
+    <div class="item-row p3"><span class="item-name">Angostura Bitters</span><div class="hbar"><div class="seg"></div><div class="seg"></div><div class="seg"></div></div></div>
+  </div>
+
+  <div class="cat-card col-blue">
+    <div class="cat-head"><span class="cat-emoji">🫧</span><span class="cat-title">Sodas & Mixers</span></div>
+    <div class="item-row p3"><span class="item-name">CO2 / Club Soda</span><div class="hbar"><div class="seg"></div><div class="seg"></div><div class="seg"></div></div></div>
+    <div class="item-row p1"><span class="item-name">Ginger Ale</span><div class="hbar"><div class="seg"></div><div class="seg"></div><div class="seg"></div></div></div>
+    <div class="item-row p2"><span class="item-name">Tonic Water</span><div class="hbar"><div class="seg"></div><div class="seg"></div><div class="seg"></div></div></div>
+    <div class="item-row p2"><span class="item-name">Pepsi</span><div class="hbar"><div class="seg"></div><div class="seg"></div><div class="seg"></div></div></div>
+    <div class="item-row p2"><span class="item-name">Diet Pepsi</span><div class="hbar"><div class="seg"></div><div class="seg"></div><div class="seg"></div></div></div>
+    <div class="item-row p2"><span class="item-name">Starry</span><div class="hbar"><div class="seg"></div><div class="seg"></div><div class="seg"></div></div></div>
+    <div class="item-row p2"><span class="item-name">Ginger Beer</span><div class="hbar"><div class="seg"></div><div class="seg"></div><div class="seg"></div></div></div>
+    <div class="item-row p2"><span class="item-name">Pink Grapefruit Soda</span><div class="hbar"><div class="seg"></div><div class="seg"></div><div class="seg"></div></div></div>
+  </div>
+
+</main>
+</body>
+</html>
