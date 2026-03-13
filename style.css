@@ -90,7 +90,7 @@ header h1 {
   max-width: 960px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 12px;
   align-items: start;
 }
@@ -175,3 +175,9 @@ header h1 {
 .col-pink   .cat-title { color: #fb7185; }
 .col-green  .cat-title { color: #4ade80; }
 .col-yellow .cat-title { color: #facc15; }
+
+@media (max-width: 600px) {
+  #main {
+    grid-template-columns: 1fr;
+  }
+}
