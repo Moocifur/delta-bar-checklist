@@ -35,11 +35,12 @@ const categories = [
     items: [
       { name: 'Sauza Blanco (well)',          priority: 3 },
       { name: 'Casamigos Blanco',             priority: 2 },
-      { name: 'Casamigos Repo',               priority: 1 },
+      // { name: 'Casamigos Repo',               priority: 1 },
+      { name: 'Casamigos Jalapeño/Cucumber',  priority: 2 },
       { name: 'Don Julio Añejo',              priority: 1 },
       { name: 'Clase Azul',                   priority: 1 },
       { name: 'Patrón Silver',                priority: 2 },
-      { name: 'Casamigos Jalapeño/Cucumber',  priority: 2 },
+      
     ]
   },
   {
