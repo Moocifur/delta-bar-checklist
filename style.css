@@ -14,6 +14,8 @@
   --c2:     #f5a623;  /* Medium — orange */
   --c3:     #00d4aa;  /* High   — teal   */
   --empty:  rgba(255, 255, 255, 0.07);
+  --group-border: rgba(255, 255, 255, 0.11);
+  --group-bg: rgba(255, 255, 255, 0.03);
 }
 
 body {
@@ -92,6 +94,22 @@ header h1 {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 12px;
+  align-items: start;
+}
+
+/* ── Group wrapper — spans full width, holds its own inner grid ── */
+.group-wrapper {
+  grid-column: 1 / -1;
+  background: var(--group-bg);
+  border: 1px solid var(--group-border);
+  border-radius: 18px;
+  padding: 10px;
+}
+
+.group-inner {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
   align-items: start;
 }
 
@@ -178,6 +196,9 @@ header h1 {
 
 @media (max-width: 600px) {
   #main {
+    grid-template-columns: 1fr;
+  }
+  .group-inner {
     grid-template-columns: 1fr;
   }
 }

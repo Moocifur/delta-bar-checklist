@@ -126,7 +126,7 @@ const categories = [
     emoji: '🍾',
     color: 'col-yellow',
     items: [
-      { name: 'Prosecco (splits)',      priority: 2 },
+      { name: 'House Sparkling',      priority: 2 },
       { name: 'Charles & Charles (Rosé)', priority: 1 },
       { name: 'Mionetto Prosecco',      priority: 1 },
     ]
@@ -163,13 +163,14 @@ const categories = [
     ]
   },
   {
-    name: 'Syrups & Bitters',
+    name: 'Bitters & Accents',
     emoji: '🧪',
     color: 'col-teal',
     items: [
-      { name: 'Simple Syrup',      priority: 3 },
-      { name: 'Grenadine',         priority: 1 },
-      { name: 'Angostura Bitters', priority: 3 },
+      { name: 'Grenadine',           priority: 1 },
+      { name: 'Angostura Bitters',   priority: 3 },
+      { name: 'Ginger Beer',         priority: 2 },
+      { name: 'Pink Grapefruit Soda',priority: 2 },
     ]
   },
   {
@@ -196,8 +197,6 @@ const categories = [
       { name: 'Pepsi',                priority: 2 },
       { name: 'Diet Pepsi',           priority: 2 },
       { name: 'Starry',               priority: 2 },
-      { name: 'Ginger Beer',          priority: 2 },
-      { name: 'Pink Grapefruit Soda', priority: 2 },
     ]
   },
 ];

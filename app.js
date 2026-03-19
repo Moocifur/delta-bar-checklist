@@ -1,18 +1,22 @@
 // ============================================================
 //  BAR SHEET — APP
 //  Reads from data.js and builds the card UI dynamically.
-//  You shouldn't need to touch this file often.
 // ============================================================
 
+// Category names that belong to each group
+const GROUPS = {
+  spirits: ['Vodka', 'Gin', 'Tequila', 'Whiskey & Bourbon', 'Scotch', 'Other Spirits'],
+  wine:    ['Red Wine', 'White Wine', 'Sparkling'],
+};
+
 function buildHealthBar(priority) {
-  const segs = [1, 2, 3].map(i => {
-    const seg = document.createElement('div');
-    seg.className = 'seg';
-    return seg;
-  });
   const hbar = document.createElement('div');
   hbar.className = 'hbar';
-  segs.forEach(s => hbar.appendChild(s));
+  for (let i = 0; i < 3; i++) {
+    const seg = document.createElement('div');
+    seg.className = 'seg';
+    hbar.appendChild(seg);
+  }
   return hbar;
 }
 
@@ -40,6 +44,18 @@ function buildCategoryCard(category) {
   card.appendChild(head);
   category.items.forEach(item => card.appendChild(buildItemRow(item)));
   return card;
+}
+
+function buildGroupWrapper(cats) {
+  const wrapper = document.createElement('div');
+  wrapper.className = 'group-wrapper';
+
+  const inner = document.createElement('div');
+  inner.className = 'group-inner';
+
+  cats.forEach(cat => inner.appendChild(buildCategoryCard(cat)));
+  wrapper.appendChild(inner);
+  return wrapper;
 }
 
 function buildLegend() {
@@ -77,7 +93,21 @@ function buildLegend() {
 function init() {
   buildLegend();
   const main = document.getElementById('main');
-  categories.forEach(cat => main.appendChild(buildCategoryCard(cat)));
+
+  const spiritsCats = categories.filter(c => GROUPS.spirits.includes(c.name));
+  const wineCats    = categories.filter(c => GROUPS.wine.includes(c.name));
+  const otherCats   = categories.filter(c =>
+    !GROUPS.spirits.includes(c.name) && !GROUPS.wine.includes(c.name)
+  );
+
+  // Spirits group
+  if (spiritsCats.length) main.appendChild(buildGroupWrapper(spiritsCats));
+
+  // Wine & Sparkling group
+  if (wineCats.length) main.appendChild(buildGroupWrapper(wineCats));
+
+  // Everything else — individual cards
+  otherCats.forEach(cat => main.appendChild(buildCategoryCard(cat)));
 }
 
 document.addEventListener('DOMContentLoaded', init);
