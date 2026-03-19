@@ -54,6 +54,7 @@ const categories = [
       { name: 'Woodford Reserve', priority: 2 },
       { name: 'Knob Creek',       priority: 1 },
       { name: 'Bulleit Rye',      priority: 1 },
+      { name: 'Crown Royal',      priority: 1 },
     ]
   },
   {
@@ -72,7 +73,6 @@ const categories = [
     items: [
       { name: 'Jameson',             priority: 1 },
       { name: 'Hennessy VS',         priority: 1 },
-      { name: 'Lagoon Bay Apertivo', priority: 1 },
     ]
   },
   {
@@ -90,6 +90,7 @@ const categories = [
       { name: 'Dry Vermouth',      priority: 1 },
       { name: 'Grand Marnier',     priority: 1 },
       { name: 'Ancho Reyes Green', priority: 1 },
+      { name: 'Lagoon Bay Apertivo', priority: 1 },
     ]
   },
   {
@@ -126,7 +127,7 @@ const categories = [
     emoji: '🍾',
     color: 'col-yellow',
     items: [
-      { name: 'House Sparkling',      priority: 2 },
+      { name: 'Prosecco (splits)',      priority: 2 },
       { name: 'Charles & Charles (Rosé)', priority: 1 },
       { name: 'Mionetto Prosecco',      priority: 1 },
     ]
@@ -178,12 +179,11 @@ const categories = [
     emoji: '🍯',
     color: 'col-pink',
     items: [
-      { name: 'Toasted Almond',    priority: 1 },
-      { name: 'Mocha',             priority: 1 },
-      { name: 'Chipotle',          priority: 1 },
-      { name: 'Pineapple Passion Fruit', priority: 1 },
-      { name: 'Hibiscus',          priority: 1 },
-      { name: 'Desert Pear',       priority: 1 },
+      { name: 'Toasted Almond Mocha',  priority: 1 },
+      { name: 'Chipotle & Pineapple',  priority: 1 },
+      { name: 'Passion Fruit',         priority: 1 },
+      { name: 'Hibiscus',              priority: 1 },
+      { name: 'Desert Pear',           priority: 1 },
     ]
   },
   {
